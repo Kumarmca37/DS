@@ -1,0 +1,167 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+   int n,o,op,i,j,k,evcount=0,odcount=0,prime=0,pcount=0,pfsum=0,pfcount=0,ad,ac,ar,armcount=0,acount=0,asum=0,plnd,plr,prev=0,plncount=0,f=1;
+   int *a=(int*)malloc(n*sizeof(int));
+   printf("--OPTIONS--\n1)No,of Evens & Odds.\n2)No,of Prime numbers.\n3)No,of Perfect numbers.\n4)No,of Armstrong numbers.\n5)No,of Palindrome numbers.\n6)Factorial of each Element.\n7)Exit.\nEnter an Option (1-7) : ");
+   scanf("%d",&o);
+   printf("\n");
+while((o<7)&&(o!=0))
+{
+   switch(o)
+   {
+       case 1:
+       printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+          printf("Enter the value at a[%d] : ",i);
+          scanf("%d",a+i);
+       }
+   	   for(i=0;i<n;i++)
+   	   {
+   	   	   if(a[i]%2==0)
+   	   	   {
+   	   	   	   evcount++;
+   	   	   }
+   	   	   else
+   	   	   {
+   	   	   	   odcount++;
+   	   	   }
+   	   }
+   	   printf("\nNo,of Even numbers : %d\nNo,of Odd numbers : %d\n",evcount,odcount);
+   	   break;
+   	   case 2:
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+          printf("Enter the value at a[%d] : ",i);
+          scanf("%d",a+i);
+       }
+   	   for(i=0;i<n;i++)
+   	   {
+   	   	   for(j=1;j<=a[i];j++)
+   	   	   {
+   	   	   	   if(a[i]%j==0)
+   	   	   	   {
+   	   	   	   	   prime++;
+   	   	   	   }
+   	   	   }
+   	   	   if(prime==2)
+   	   	   {
+   	   	   	   pcount++;
+   	   	   }
+   	   	   prime = 0;
+   	   }
+   	   printf("\nNo,of Prime numbers : %d\n",pcount);
+   	   break;
+   	   case 3:
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+          printf("Enter the value at a[%d] : ",i);
+          scanf("%d",a+i);
+       }
+   	   for(i=0;i<n;i++)
+   	   {
+   	   	   for(j=1;j<a[i];j++)
+   	   	   {
+   	   	   	   if(a[i]%j==0)
+   	   	   	   {
+   	   	   	   	   pfsum = pfsum + j;
+   	   	   	   }
+   	   	   }
+   	   	   if(pfsum==a[i])
+   	   	   {
+   	   	   	   pfcount++;
+   	   	   }
+   	   	   pfsum = 0;
+   	   }
+   	   printf("\nNo,of Perfect numbers : %d\n",pfcount);
+   	   break;
+   	   case 4:
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+          printf("Enter the value at a[%d] : ",i);
+          scanf("%d",a+i);
+       }
+   	   for(i=0;i<n;i++)
+   	   {
+            ad = a[i];
+            ac = ad;
+            while(a[i] > 0)
+              {
+   	            a[i] = a[i]/10;
+   	            acount++;
+              }
+            while(ad > 0)
+              {
+   	            ar = ad%10;
+   	            ad = ad/10;
+   	            asum = asum + pow(ar,acount);
+              }
+            if(asum == ac)
+              {
+   	              armcount++;
+              }
+              acount = 0;
+              asum = 0;
+       }
+       printf("\nNo,of Armstrong numbers : %d\n",armcount);
+   	   break;
+   	   case 5:
+       printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+          printf("Enter the value at a[%d] : ",i);
+          scanf("%d",a+i);
+       }
+       for(i=0;i<n;i++)
+       {
+   	      plnd=a[i];
+	      while(a[i] > 0)
+              {
+   	             plr = a[i]%10;
+   	             prev = (prev * 10) + plr;
+   	             a[i] = a[i]/10;
+              }
+		  if(prev==plnd)
+		    {
+		    	plncount++;
+		    }
+		    prev = 0;
+		}
+		printf("\nNo,of Palindrome numbers : %d\n",plncount);
+   	   break;
+   	   case 6:
+		printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+          printf("Enter the value at a[%d] : ",i);
+          scanf("%d",a+i);
+       }
+          for(i=0;i<n;i++)
+          {
+ 	          for(j=1;j<=a[i];j++)
+ 	          {
+ 	          	  f = f * j;
+ 	          }
+ 	          printf("\nFactorial of %d = %d \n",a[i],f);
+ 	          f = 1;
+          }
+       break;
+   }
+   printf("\n");
+   printf("--OPTIONS--\n1)No,of Evens & Odds.\n2)No,of Prime numbers.\n3)No,of Perfect numbers.\n4)No,of Armstrong numbers.\n5)No,of Palindrome numbers.\n6)Factorial of each Element.\n7)Exit.\nEnter an Option (1-7) : ");
+   scanf("%d",&o);
+   printf("\n");
+}
+}
