@@ -1,0 +1,342 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+   int o,n,i,j,ele,frq=0,o5,temp=0,pal=0,o7,pos,val,o8,k,d;
+   int *a=(int*)malloc(n*sizeof(int));
+   printf("--OPTIONS--\n1)Read array elements.\n2)Print array elements.\n3)Search for an element.\n4)Frequency of an element.\n5)Sort the array.\n6)Array Palindrome test.\n7)Insert an element.\n8)Delete an element.\n9)Rotate towards left.\n10)Rotate towards right.\n11)Exit.\nEnter an Option (1-11) : ");
+   scanf("%d",&o);
+   printf("\n");
+while((o<11)&&(o!=0))
+{
+   switch(o)
+   {
+   	   //1)Read array elements.
+   	   case 1:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\n");
+   	   break;
+   	   //2)Print array elements.
+   	   case 2:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\n--Given values are--\n");
+       for(i=0;i<n;i++)
+       {
+       	 printf("Value at a[%d] = %d\n",i,a[i]);
+       }
+       printf("\n");
+   	   break;
+   	   //3)Search for an element.
+   	   case 3:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\nWhich element you want to search for : ");
+       scanf("%d",&ele);
+       i=0;
+       while(a[i]!=ele)
+       {
+       	   i++;
+       }
+       printf("\nElement %d is at index %d,Position %d.\n",ele,i,i+1);
+       printf("\n");
+   	   break;
+       //4)Frequency of an element.
+   	   case 4:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\nEnter the element from given array : ");
+       scanf("%d",&ele);
+       for(i=0;i<n;i++)
+       {
+       	  if(a[i]==ele)
+       	  {
+       	  	 frq++;
+       	  }
+       }
+       printf("\nFrequency of element %d in given array = %d.\n",ele,frq);
+       printf("\n");
+   	   break;
+   	   //5)Sort the array.
+   	   case 5:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\n--SORTING TYPES--\n1)Ascending order.\n2)Descending order.\nEnter an option(1-2) : ");
+       scanf("%d",&o5);
+       switch(o5)
+       {
+       	  case 1:
+       	  for(i=0;i<n-1;i++)
+       	  {
+       	  	for(j=0;j<(n-1)-i;j++)
+       	  	{
+       	  	   if(a[j]>a[j+1])
+       	  	   {
+       	  	   	  temp = a[j];
+       	  	   	  a[j] = a[j+1];
+       	  	   	  a[j+1] = temp;
+       	  	   }
+       	  	}
+       	  }
+       	  printf("\n--UPDATED ARRAY--\n");
+       	  for(i=0;i<n;i++)
+       	  {
+       	  printf("Value at a[%d] = %d\n",i,a[i]);
+       	  }
+       	  break;
+       	  case 2:
+       	  for(i=0;i<n-1;i++)
+       	  {
+       	  	for(j=0;j<(n-1)-i;j++)
+       	  	{
+       	  	   if(a[j]<a[j+1])
+       	  	   {
+       	  	   	  temp = a[j];
+       	  	   	  a[j] = a[j+1];
+       	  	   	  a[j+1] = temp;
+       	  	   }
+       	  	}
+       	  }
+       	  printf("\n--UPDATED ARRAY--\n");
+       	  for(i=0;i<n;i++)
+       	  {
+       	  printf("Value at a[%d] = %d\n",i,a[i]);
+       	  }
+       	  break;
+       }
+       printf("\n");
+   	   break;
+   	   //6)Array Palindrome test.
+   	   case 6:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       for(i=0;i<=(n/2);i++)
+       {
+       	  if(a[i]!=a[n-1-i])
+       	  {
+       	  	pal++;
+       	  }
+       }
+       if(pal>0)
+       {
+       	  printf("\nGiven array is not Palindrome.\n");
+       }
+       else
+       {
+       	  printf("\nGiven array is Palindrome.\n");
+       }
+       printf("\n");
+   	   break;
+   	   //7)Insert an element.
+   	   case 7:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\n--INSERTION OPTIONS--\n1)By Position.\n2)By Value.\n(*Choose option 1 if array has similar elements*)\nEnter an option(1-2) : ");
+       scanf("%d",&o7);
+       switch(o7)
+       {
+       	   case 1:
+       	   printf("\nEnter the Insertion element : ");
+           scanf("%d",&ele);
+           printf("\nEnter the Position(1-%d) : ",n);
+           scanf("%d",&pos);
+           for(i=n-1;i>=pos-1;i--)
+           {
+   	          a[i+1]=a[i];
+   	          a[i]=ele;
+           }
+           n++;
+           printf("\n--UPDATED ARRAY--\n");
+           for(i=0;i<n;i++)
+           {
+              printf("Value at a[%d] = %d\n",i,a[i]);
+           }
+       	   break;
+       	   case 2:
+       	   printf("\nEnter the insertion element : ");
+           scanf("%d",&ele);
+           printf("\nEnter the value from array : ");
+           scanf("%d",&val);
+           i=0;
+           while((i<n)&&(a[i]!=val))
+           {
+   	          i++;
+           }
+           pos=i;
+           for(i=n-1;i>=pos;i--)
+           {
+   	          a[i+1]=a[i];
+   	          a[i]=ele;
+           }
+           n++;
+           printf("\n--UPDATED ARRAY--\n");
+           for(i=0;i<n;i++)
+           {
+              printf("Value at a[%d] = %d\n",i,a[i]);
+           }
+       	   break;
+       }
+       printf("\n");
+   	   break;
+   	   //8)Delete an element.
+   	   case 8:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\n--DELETION OPTIONS--\n1)By Position.\n2)By Value.\n(*Choose option 1 if array has similar elements*)\nEnter an option(1-2) : ");
+       scanf("%d",&o8);
+       switch(o8)
+       {
+       	   case 1:
+           printf("\nEnter the position : ");
+           scanf("%d",&pos);
+           for(i=pos;i<n;i++)
+           {
+   	          a[i-1]=a[i];
+           }
+           n--;
+           printf("-\n-UPDATED ARRAY--\n");
+           for(i=0;i<n;i++)
+           {
+              printf("Value at a[%d] = %d\n",i,a[i]);
+           }
+       	   break;
+       	   case 2:
+       	   printf("\nEnter the value from array : ");
+           scanf("%d",&val);
+           i=0;
+           while((i<n)&&(a[i]!=val))
+           {
+   	           i++;
+           }
+           pos=i;
+           for(i=pos+1;i<n;i++)
+           {
+   	          a[i-1]=a[i];
+           }
+           n--;
+           printf("\n--UPDATED ARRAY--\n");
+           for(i=0;i<n;i++)
+           {
+              printf("Value at a[%d] = %d\n",i,a[i]);
+           }
+       	   break;
+       }
+       printf("\n");
+   	   break;
+   	   //9)Rotate towards left.
+   	   case 9:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\nEnter k value : ");
+       scanf("%d",&k);
+       printf("Values going to left\n");
+       for(i=1;i<=k;i++)
+       {
+   	      d=a[0];
+   	      printf("%d ",d);
+   	      for(j=0;j<n-1;j++)
+   	      {
+   	   	     a[j]=a[j+1];
+   	      }
+   	      a[j]=d;
+       }
+       printf("\n--UPDATED ARRAY--\n");
+       for(i=0;i<n;i++)
+       {
+   	      printf("%d ",a[i]);
+       }
+       printf("\n");
+   	   break;
+   	   //10)Rotate towards right.
+   	   case 10:
+   	   printf("--------------------\n");
+   	   printf("How many Elements you want to enter : ");
+       scanf("%d",&n);
+       for(i=0;i<n;i++)
+       {
+         printf("Enter the value at a[%d] : ",i);
+         scanf("%d",a+i);
+       }
+       printf("\nEnter k value : ");
+       scanf("%d",&k);
+       printf("Values going to right\n");
+       for(i=1;i<=k;i++)
+       {
+   	      d=a[n-1];
+   	      printf("%d ",d);
+   	      for(j=n-1;j>=1;j--)
+   	      {
+   	   	     a[j]=a[j-1];
+   	      }
+   	      a[j]=d;
+       }
+       printf("\n--UPDATED ARRAY--\n");
+       for(i=0;i<n;i++)
+       {
+   	      printf("%d ",a[i]);
+       }
+       printf("\n");
+   	   break;
+   }
+   printf("\n");
+   printf("--OPTIONS--\n1)Read array elements.\n2)Print array elements.\n3)Search for an element.\n4)Frequency of an element.\n5)Sort the array.\n6)Array Palindrome test.\n7)Insert an element.\n8)Delete an element.\n9)Rotate towards left.\n10)Rotate towards right.\n11)Exit.\nEnter an Option (1-11) : ");
+   scanf("%d",&o);
+   printf("\n");
+}
+}
